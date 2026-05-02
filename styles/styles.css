@@ -482,7 +482,7 @@ main > .section:nth-of-type(even):nth-of-type(n+4) .default-content-wrapper > * 
 }
 
 /* Section-specific background treatments */
-/* Section 3: JAX AI — light navy bg */
+/* Section 3: JAX AI — light blue-gray bg */
 main > .section:nth-of-type(3) {
   background-color: #F0F4F8;
 }
@@ -497,7 +497,7 @@ main > .section:nth-of-type(6) {
   background-color: var(--xero-white);
 }
 
-/* Section 7: Integrations */
+/* Section 7: Integrations — dark navy */
 main > .section:nth-of-type(7) {
   background-color: var(--xero-navy);
 }
@@ -525,52 +525,62 @@ main > .section:nth-of-type(7) a.button:hover {
   color: var(--xero-navy);
 }
 
-/* Section 8: Accountants */
+/* Section 8: Accountants — light gray */
 main > .section:nth-of-type(8) {
   background-color: var(--xero-light-gray);
 }
 
-/* Section 10: CTA — dark navy */
+/* Section 9: Get paid — white */
+main > .section:nth-of-type(9) {
+  background-color: var(--xero-white);
+}
+
+/* Section 10: Affiliate — white */
 main > .section:nth-of-type(10) {
+  background-color: var(--xero-white);
+}
+
+/* Section 11: CTA "Start using Xero for free" — dark navy */
+main > .section:nth-of-type(11) {
   background-color: var(--xero-navy);
   text-align: center;
 }
 
-main > .section:nth-of-type(10) h2 {
+main > .section:nth-of-type(11) h2 {
   color: var(--xero-white);
   font-size: 40px;
   margin-bottom: 16px;
 }
 
-main > .section:nth-of-type(10) p:not(.button-wrapper) {
+main > .section:nth-of-type(11) p:not(.button-wrapper) {
   color: rgba(255, 255, 255, 0.85);
   font-size: 18px;
 }
 
-main > .section:nth-of-type(10) .default-content-wrapper {
+main > .section:nth-of-type(11) .default-content-wrapper {
   display: block;
   text-align: center;
 }
 
-main > .section:nth-of-type(10) .button-wrapper {
+main > .section:nth-of-type(11) .button-wrapper {
   justify-content: center;
   gap: 16px;
 }
 
-/* Section 11: Legal / disclaimer */
-main > .section:nth-of-type(11) {
+/* Section 12: Legal / disclaimer */
+main > .section:nth-of-type(12) {
   padding: 24px 0;
   background-color: var(--xero-white);
   border-top: 1px solid #E8E8E8;
 }
 
-main > .section:nth-of-type(11) p {
+main > .section:nth-of-type(12) p {
   font-size: 13px;
   color: var(--xero-mid-gray);
   text-align: center;
 }
 
-main > .section:nth-of-type(11) .default-content-wrapper {
+main > .section:nth-of-type(12) .default-content-wrapper {
   display: block;
 }
 
@@ -681,10 +691,6 @@ main > .section:nth-of-type(5) .pricing-grid {
    Section 6 — Business Types
    Card grid with image + title + description
    ============================================================ */
-main > .section:nth-of-type(6) .default-content-wrapper {
-  display: block;
-}
-
 main > .section:nth-of-type(6) h2 {
   font-size: 36px;
   color: var(--xero-navy);
@@ -708,7 +714,7 @@ main > .section:nth-of-type(6) .default-content-wrapper {
 }
 
 main > .section:nth-of-type(6) h2,
-main > .section:nth-of-type(6) h2 + p {
+main > .section:nth-of-type(6) p:first-of-type {
   grid-column: 1 / -1;
 }
 
@@ -738,13 +744,6 @@ main > .section:nth-of-type(6) p:has(picture) img {
   object-fit: cover;
   border-radius: 8px;
   display: block;
-}
-
-/* Group each business type card */
-main > .section:nth-of-type(6) .default-content-wrapper > p:has(picture),
-main > .section:nth-of-type(6) .default-content-wrapper > h3,
-main > .section:nth-of-type(6) .default-content-wrapper > p:not(:has(picture)):not(:first-of-type) {
-  /* These are naturally grouped by grid layout */
 }
 
 /* ============================================================
@@ -819,5 +818,11 @@ main > .section:nth-of-type(6) .default-content-wrapper > p:not(:has(picture)):n
   /* Awards wrap */
   main > .section:nth-of-type(2) .default-content-wrapper img {
     height: 60px;
+  }
+
+  /* CTA section on mobile */
+  main > .section:nth-of-type(11) {
+    text-align: center;
+    padding: 48px 20px;
   }
 }
