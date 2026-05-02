@@ -1,0 +1,132 @@
+/* ============================================================
+   Columns Block
+   3-column feature grid with icons/images above text
+   ============================================================ */
+
+.columns-wrapper {
+  background-color: var(--xero-white);
+}
+
+.columns.block {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 32px;
+}
+
+/* Row = grid of columns */
+.columns.block > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* Two-column variant */
+.columns.block.columns-2-cols > div {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Four-column variant */
+.columns.block.columns-4-cols > div {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Each cell */
+.columns.block > div > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Images/icons in columns */
+.columns.block img {
+  width: 100%;
+  max-width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.columns.block picture {
+  display: block;
+  margin-bottom: 16px;
+}
+
+/* If picture is larger (illustration, not icon) */
+.columns.block > div > div > picture:first-child img,
+.columns.block > div > div > p:first-child picture img {
+  max-width: 100%;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+/* Headings */
+.columns.block h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--xero-navy);
+  margin-top: 0;
+  margin-bottom: 16px;
+  grid-column: 1 / -1;
+}
+
+.columns.block h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--xero-navy);
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding-top: 20px;
+  border-top: 3px solid var(--xero-teal);
+  width: 100%;
+}
+
+/* Body text */
+.columns.block p {
+  color: var(--xero-dark-blue);
+  font-size: 15px;
+  line-height: 1.65;
+  margin: 0 0 8px;
+}
+
+/* Links */
+.columns.block a:not(.button) {
+  color: var(--xero-blue);
+  font-weight: 600;
+}
+
+/* Button */
+.columns.block .button-wrapper {
+  margin-top: 16px;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 899px) {
+  .columns.block > div {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .columns.block.columns-2-cols > div {
+    grid-template-columns: 1fr;
+  }
+
+  .columns.block h2 {
+    grid-column: 1;
+  }
+
+  .columns.block {
+    padding: 48px 20px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .columns.block > div {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
