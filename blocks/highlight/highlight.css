@@ -1,0 +1,185 @@
+/* ============================================================
+   Highlight Block
+   Two-column layout: text (left) + image (right)
+   Alternates with .highlight.image-left variant
+   ============================================================ */
+
+.highlight-wrapper {
+  background-color: var(--xero-white);
+}
+
+.highlight.block {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 72px 32px;
+}
+
+/* EDS row — becomes the two-column grid */
+.highlight.block > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Text column */
+.highlight.block > div > div:first-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Image column */
+.highlight.block > div > div:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Headings */
+.highlight.block h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--xero-navy);
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.highlight.block h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--xero-navy);
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+/* Body text */
+.highlight.block p:not(.button-wrapper) {
+  color: var(--xero-dark-blue);
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+/* Lists */
+.highlight.block ul {
+  padding-left: 20px;
+  margin: 8px 0 20px;
+  color: var(--xero-dark-blue);
+}
+
+.highlight.block ul li {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+/* Links */
+.highlight.block a:not(.button) {
+  color: var(--xero-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.highlight.block a:not(.button):hover {
+  text-decoration: underline;
+}
+
+/* Button wrapper */
+.highlight.block .button-wrapper {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Images */
+.highlight.block picture {
+  display: block;
+  width: 100%;
+}
+
+.highlight.block img {
+  width: 100%;
+  max-width: 540px;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+/* ============================================================
+   Variant: image on left, text on right
+   Add class "image-left" to the block in the document
+   ============================================================ */
+.highlight.block.image-left > div {
+  direction: rtl;
+}
+
+.highlight.block.image-left > div > div {
+  direction: ltr;
+}
+
+/* ============================================================
+   Variant: dark background
+   Add class "dark" to the block
+   ============================================================ */
+.highlight-wrapper.dark,
+.highlight.block.dark {
+  background-color: var(--xero-navy);
+}
+
+.highlight.block.dark h2,
+.highlight.block.dark h3 {
+  color: var(--xero-white);
+}
+
+.highlight.block.dark p:not(.button-wrapper) {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.highlight.block.dark ul li {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.highlight.block.dark a:not(.button) {
+  color: var(--xero-teal);
+}
+
+.highlight.block.dark a.button {
+  border-color: var(--xero-teal);
+  background-color: transparent;
+  color: var(--xero-teal);
+}
+
+.highlight.block.dark a.button:hover {
+  background-color: var(--xero-teal);
+  color: var(--xero-navy);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 899px) {
+  .highlight.block > div {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* Image goes above text on mobile */
+  .highlight.block > div > div:last-child {
+    order: -1;
+  }
+
+  .highlight.block h2 {
+    font-size: 28px;
+  }
+
+  .highlight.block img {
+    border-radius: 8px;
+  }
+
+  .highlight.block {
+    padding: 48px 20px;
+  }
+}
