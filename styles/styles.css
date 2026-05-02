@@ -275,20 +275,7 @@ main > .section:nth-of-type(1) a:not(.button) {
   color: var(--xero-teal);
 }
 
-/* Hero text block — left column */
-main > .section:nth-of-type(1) .default-content-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-}
-
-/* Hero layout: text left, image right */
-main > .section:nth-of-type(1) .default-content-wrapper > p:last-child picture {
-  display: block;
-}
-
-/* Restructure hero with flex using CSS grid approach */
+/* Hero: two-column grid layout - text left, image right */
 main > .section:nth-of-type(1) .default-content-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -296,6 +283,10 @@ main > .section:nth-of-type(1) .default-content-wrapper {
   align-items: center;
   gap: 32px;
   width: 100%;
+}
+
+main > .section:nth-of-type(1) .default-content-wrapper > p:last-child picture {
+  display: block;
 }
 
 /* Text elements go in column 1 */
