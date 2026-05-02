@@ -1,0 +1,90 @@
+/* ============================================================
+   Awards Block
+   White bg, centered heading, award logos in a flex row
+   ============================================================ */
+
+.awards-wrapper {
+  background-color: var(--xero-white);
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.awards.block {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 32px;
+  text-align: center;
+}
+
+/* EDS row/cell wrapper */
+.awards.block > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.awards.block > div > div {
+  width: 100%;
+}
+
+/* Heading cell */
+.awards.block > div > div:first-child {
+  text-align: center;
+}
+
+.awards.block h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--xero-navy);
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.awards.block p {
+  color: var(--xero-mid-gray);
+  font-size: 15px;
+  margin: 0;
+}
+
+/* Logo row cell */
+.awards.block > div > div:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px 32px;
+}
+
+.awards.block > div > div:last-child picture {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.awards.block img {
+  height: 80px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.65;
+  transition: filter 0.25s ease, opacity 0.25s ease;
+}
+
+.awards.block img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 599px) {
+  .awards.block img {
+    height: 56px;
+  }
+
+  .awards.block h2 {
+    font-size: 22px;
+  }
+}
