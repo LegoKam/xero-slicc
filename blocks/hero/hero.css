@@ -1,0 +1,132 @@
+/* ============================================================
+   Hero Block
+   Dark navy background, two-column: text left, image right
+   ============================================================ */
+
+.hero-wrapper {
+  background-color: var(--xero-navy);
+  overflow: hidden;
+}
+
+.hero.block {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 32px 0;
+  min-height: 520px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* EDS wraps content in > div > div (rows > cells) */
+.hero.block > div {
+  display: contents;
+}
+
+/* Text column — left */
+.hero.block > div > div:first-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
+
+/* Image column — right */
+.hero.block > div > div:last-child {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Headings */
+.hero.block h1 {
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--xero-white);
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Body text */
+.hero.block p:not(.button-wrapper) {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* Button wrapper */
+.hero.block .button-wrapper {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Accent / CTA button */
+.hero.block a.button.accent {
+  background-color: var(--xero-teal);
+  border-color: var(--xero-teal);
+  color: var(--xero-navy);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 3px;
+}
+
+.hero.block a.button.accent:hover {
+  background-color: #3ecb99;
+  border-color: #3ecb99;
+}
+
+/* Plain links in hero */
+.hero.block a:not(.button) {
+  color: var(--xero-teal);
+  text-decoration: underline;
+}
+
+/* Hero image */
+.hero.block picture {
+  display: block;
+  width: 100%;
+}
+
+.hero.block img {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  display: block;
+  border-radius: 16px 16px 0 0;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 899px) {
+  .hero.block {
+    grid-template-columns: 1fr;
+    padding: 48px 20px 0;
+    min-height: auto;
+    gap: 32px;
+  }
+
+  .hero.block h1 {
+    font-size: 36px;
+  }
+
+  /* Image comes first on mobile */
+  .hero.block > div > div:last-child {
+    order: -1;
+  }
+
+  .hero.block img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin: 0 auto;
+    max-width: 200px;
+  }
+}
