@@ -84,14 +84,14 @@ export default async function decorate(block) {
 
   const children = Array.from(navContent.children);
 
-  // 1. Promo bar — first <p>
+  // 1. Promo bar — first <p> (no <strong>)
   const promoP = children.find((el) => el.tagName === 'P' && !el.querySelector('strong'));
-  // 2. Logo — <a> with picture
-  const logoA = children.find((el) => el.tagName === 'A' && el.querySelector('picture'));
+  // 2. Logo — <a> with picture (direct child of navContent)
+  const logoA = children.find((el) => el.tagName === 'A' && el.querySelector('picture, img'));
   // 3. Nav list — <ul>
   const navUl = children.find((el) => el.tagName === 'UL');
-  // 4. CTA — last <p> with <strong> or login link
-  const ctaP = children.find((el) => el.tagName === 'P' && el.querySelector('strong, a'));
+  // 4. CTA — <p> that contains a <strong> (Try Xero for free button)
+  const ctaP = children.find((el) => el.tagName === 'P' && el.querySelector('strong'));
 
   // Build wrapper
   const nav = document.createElement('nav');
