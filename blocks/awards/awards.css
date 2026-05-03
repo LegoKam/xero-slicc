@@ -1,7 +1,10 @@
 /* ============================================================
    Awards Block
    White bg, centered heading, award logos in a flex row
-   The logo images are all inside a single <p> tag in the last row's cell
+   
+   After awards.js processes:
+   Row 1: single cell with h2 + p (heading/subtext)
+   Row 2: two cells — first is empty, second has 7 p>picture elements
    ============================================================ */
 
 .awards-wrapper {
@@ -16,7 +19,7 @@
   text-align: center;
 }
 
-/* Row: display as column, centered */
+/* Each row as column-flex, centered */
 .awards.block > div {
   display: flex;
   flex-direction: column;
@@ -24,13 +27,13 @@
   gap: 32px;
 }
 
-/* All cells */
+/* All cells default */
 .awards.block > div > div {
   width: 100%;
   text-align: center;
 }
 
-/* Heading cell (first row, first cell) */
+/* Heading row */
 .awards.block h2 {
   font-size: 28px;
   font-weight: 700;
@@ -45,37 +48,38 @@
   margin: 0;
 }
 
-/* Logo row: the second row's cell contains a <p> with multiple <picture> elements inline */
-.awards.block > div:last-child > div {
-  /* nothing needed — the p inside handles it */
-}
-
-/* The paragraph containing all logo pictures */
-.awards.block > div:last-child > div > p {
+/* ---- Logo cell ----
+   Row 2, Cell 2 (last-child) contains multiple p>picture elements.
+   Make the cell itself a flex container wrapping logos in a row.
+   ------------------------------------------------------------ */
+.awards.block > div:last-child > div:last-child {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 16px 32px;
-  margin: 0;
 }
 
-/* Also handle if logos are in any p with pictures */
-.awards.block p:has(picture) {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+/* Each p is a flex item — reset block behaviour */
+.awards.block > div:last-child > div:last-child > p {
+  display: inline-flex;
   align-items: center;
-  gap: 16px 32px;
+  justify-content: center;
   margin: 0;
+  padding: 0;
+  flex-shrink: 0;
 }
 
-/* Each picture element */
+/* Empty paragraphs from first cell */
+.awards.block > div:last-child > div:first-child {
+  display: none;
+}
+
+/* picture elements */
 .awards.block picture {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
 }
 
 /* Logo images */
@@ -108,7 +112,7 @@
     font-size: 22px;
   }
 
-  .awards.block p:has(picture) {
+  .awards.block > div:last-child > div:last-child {
     gap: 12px 20px;
   }
 }

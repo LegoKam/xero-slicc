@@ -53,8 +53,17 @@
   color: var(--xero-navy);
   margin-top: 0;
   margin-bottom: 12px;
+}
+
+/* Pricing card title separator */
+main > .section.cards-container:nth-child(5) .cards.block > div > div h3 {
   padding-bottom: 12px;
   border-bottom: 1px solid #E8E8E8;
+}
+
+/* Pricing cards: teal top accent */
+main > .section.cards-container:nth-child(5) .cards.block > div > div {
+  border-top: 4px solid var(--xero-teal);
 }
 
 /* Price highlight — the "Now $X" paragraph contains a <strong> */
@@ -73,8 +82,8 @@
   margin: 0 0 8px;
 }
 
-/* "Usually $X" — gray out the original price */
-.cards.block > div > div p:first-of-type {
+/* "Usually $X" — gray out the original price (pricing cards only, not business type cards) */
+main > .section.cards-container:nth-child(5) .cards.block > div > div p:first-of-type {
   color: var(--xero-mid-gray);
   font-size: 14px;
   text-decoration: line-through;

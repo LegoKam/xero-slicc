@@ -5,7 +5,8 @@
    ============================================================ */
 
 .highlight-wrapper {
-  background-color: var(--xero-white);
+  /* Let section background show through */
+  background-color: transparent;
 }
 
 .highlight.block {
