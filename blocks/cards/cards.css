@@ -84,7 +84,7 @@ main > .section.cards-container:nth-child(5) .cards.block > div > div {
 
 /* "Usually $X" — gray out the original price (pricing cards only, not business type cards) */
 main > .section.cards-container:nth-child(5) .cards.block > div > div p:first-of-type {
-  color: var(--xero-mid-gray);
+  color: #595E68; /* was --xero-mid-gray #8E949F (~3.2:1 fails); #595E68 = ~5.9:1 on white */
   font-size: 14px;
   text-decoration: line-through;
   margin-bottom: 4px;
@@ -92,7 +92,7 @@ main > .section.cards-container:nth-child(5) .cards.block > div > div p:first-of
 
 /* Card CTA links */
 .cards.block > div > div a:not(.button) {
-  color: var(--xero-blue);
+  color: #005A9E; /* darkened from #0078C8 for ~6.2:1 contrast on white */
   font-weight: 600;
   font-size: 15px;
   text-decoration: none;

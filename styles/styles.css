@@ -10,7 +10,7 @@
   --xero-promo-bar:   #BBF3FD;
   --xero-white:       #FFFFFF;
   --xero-light-gray:  #F5F5F5;
-  --xero-mid-gray:    #8E949F;
+  --xero-mid-gray:    #595E68; /* was #8E949F (~3.2:1 fails); updated to ~5.9:1 on white */
   --background-color:   var(--xero-white);
   --light-color:        var(--xero-light-gray);
   --dark-color:         var(--xero-dark-blue);
@@ -341,7 +341,7 @@ main > .section.cards-container:nth-child(5) .default-content-wrapper p {
 }
 
 main > .section.cards-container:nth-child(5) .default-content-wrapper a {
-  color: var(--xero-blue);
+  color: #005A9E; /* darkened from --xero-blue #0078C8 for ~6.2:1 on white */
   font-weight: 600;
 }
 
@@ -370,7 +370,7 @@ main > .section.cards-container:nth-child(6) .default-content-wrapper p {
 }
 
 main > .section.cards-container:nth-child(6) .default-content-wrapper a {
-  color: var(--xero-blue);
+  color: #005A9E; /* darkened from --xero-blue #0078C8 for ~6.2:1 on white */
   font-weight: 600;
 }
 
@@ -453,7 +453,7 @@ main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(2)
 /* Body text in dark/blue tiles — white */
 main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(1) > div p,
 main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(2) > div:nth-child(2) p {
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff; /* was rgba(255,255,255,0.85) — fails contrast */
 }
 
 /* Links in dark/blue tiles — white underline */
@@ -477,7 +477,7 @@ main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(2)
 }
 
 main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(2) > div:nth-child(1) a {
-  color: #0078C8;
+  color: #005A9E; /* darkened from #0078C8 for ~6.2:1 on white */
   font-weight: 700;
   text-decoration: underline;
 }
@@ -577,7 +577,7 @@ main > .section:nth-child(11), main > .section:nth-child(9) h2 {
 
 main > .section.dark p:not(.button-wrapper),
 main > .section:nth-child(11), main > .section:nth-child(9) p:not(.button-wrapper) {
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff; /* was rgba(255,255,255,0.85) — fails contrast on navy */
   font-size: 18px;
   margin-bottom: 8px;
 }
@@ -598,7 +598,7 @@ main > .section:nth-child(11), main > .section:nth-child(9) .button-wrapper {
 
 main > .section.dark a:not(.button),
 main > .section:nth-child(11), main > .section:nth-child(9) a:not(.button) {
-  color: var(--xero-teal);
+  color: #5BC4F0; /* lightened for contrast on navy bg — ~6.5:1 */
   font-weight: 600;
   display: block;
   margin-top: 8px;
@@ -606,7 +606,7 @@ main > .section:nth-child(11), main > .section:nth-child(9) a:not(.button) {
 
 main > .section.dark a:not(.button):hover,
 main > .section:nth-child(11), main > .section:nth-child(9) a:not(.button):hover {
-  color: var(--xero-teal);
+  color: #5BC4F0;
   text-decoration: underline;
 }
 
@@ -629,7 +629,7 @@ main > .section:nth-child(12), main > .section:nth-child(10) .default-content-wr
 main > .section:last-child p,
 main > .section:nth-child(12), main > .section:nth-child(10) p {
   font-size: 13px;
-  color: var(--xero-mid-gray);
+  color: #595E68; /* was --xero-mid-gray #8E949F (~3.2:1 fails); #595E68 = ~5.9:1 on white */
   text-align: center;
   margin: 0;
 }

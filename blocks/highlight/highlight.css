@@ -144,12 +144,12 @@ main > .section.highlight-container:nth-child(8) .highlight.block h3 {
 
 main > .section.highlight-container:nth-child(7) .highlight.block p:not(.button-wrapper),
 main > .section.highlight-container:nth-child(8) .highlight.block p:not(.button-wrapper) {
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
 }
 
 main > .section.highlight-container:nth-child(7) .highlight.block ul li,
 main > .section.highlight-container:nth-child(8) .highlight.block ul li {
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
 }
 
 main > .section.highlight-container:nth-child(7) .highlight.block a:not(.button),
@@ -184,26 +184,26 @@ main > .section.highlight-container:nth-child(8) .highlight.block a.button:hover
 }
 
 .highlight.block.dark p:not(.button-wrapper) {
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
 }
 
 .highlight.block.dark ul li {
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
 }
 
 .highlight.block.dark a:not(.button) {
-  color: var(--xero-teal);
+  color: #5BC4F0; /* lightened for contrast on dark bg — 6.5:1 on #172C40 */
 }
 
 .highlight.block.dark a.button {
-  border-color: var(--xero-teal);
+  border-color: #5BC4F0;
   background-color: transparent;
-  color: var(--xero-teal);
+  color: #5BC4F0;
 }
 
 .highlight.block.dark a.button:hover {
-  background-color: var(--xero-teal);
-  color: var(--xero-navy);
+  background-color: #5BC4F0;
+  color: #172C40;
 }
 
 /* ============================================================

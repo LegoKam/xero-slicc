@@ -58,7 +58,7 @@
 
 /* Body text */
 .hero.block p:not(.button-wrapper) {
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
   font-size: 18px;
   line-height: 1.6;
   margin-bottom: 12px;

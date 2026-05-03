@@ -32,7 +32,7 @@ export default async function decorate(block) {
     if (el.tagName === 'H3') {
       currentCol = document.createElement('div');
       currentCol.className = 'footer-col';
-      const heading = document.createElement('h4');
+      const heading = document.createElement('h3'); /* was h4 — skipped heading order, fails a11y */
       heading.className = 'footer-col-heading';
       heading.textContent = el.textContent;
       currentCol.appendChild(heading);
