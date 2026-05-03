@@ -200,20 +200,20 @@ main img {
 }
 
 /* ============================================================
-   Sections — Base
+   Sections — Base layout
+   Block wrappers are responsible for their own padding.
+   Sections themselves just provide background context.
    ============================================================ */
 main > .section {
-  padding: var(--section-padding);
+  /* No padding by default — block wrappers handle their own */
 }
 
-main > .section > div {
+/* Default content wrapper gets max-width + padding */
+main > .section .default-content-wrapper {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 32px;
-}
-
-main > .section:first-of-type {
-  padding-top: 0;
+  padding: 64px 32px;
+  box-sizing: border-box;
 }
 
 /* Light / highlight sections */
@@ -223,518 +223,203 @@ main .section.highlight {
 }
 
 /* ============================================================
-   Section 1 — Hero
-   The first section: dark navy bg, two-column layout
-   h1 + p text left, picture right
+   Section: Hero (.section.hero-container)
+   Dark navy background, handled by .hero-wrapper in block CSS
    ============================================================ */
-main > .section:nth-of-type(1) {
+main > .section.hero-container {
   background-color: var(--xero-navy);
   padding: 0;
   overflow: hidden;
 }
 
-main > .section:nth-of-type(1) > div {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 80px 32px 0;
-  display: flex;
-  align-items: center;
-  gap: 48px;
-  min-height: 520px;
-}
-
-main > .section:nth-of-type(1) h1 {
-  font-size: 52px;
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--xero-white);
-  margin-top: 0;
-  margin-bottom: 24px;
-}
-
-main > .section:nth-of-type(1) p:not(.button-wrapper) {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 16px;
-}
-
-main > .section:nth-of-type(1) .button-wrapper {
-  margin-top: 24px;
-}
-
-main > .section:nth-of-type(1) a.button.accent {
-  background-color: var(--xero-teal);
-  border-color: var(--xero-teal);
-  color: var(--xero-navy);
-  font-size: 16px;
-  padding: 14px 28px;
-}
-
-main > .section:nth-of-type(1) a:not(.button) {
-  color: var(--xero-teal);
-}
-
-/* Hero: two-column grid layout - text left, image right */
-main > .section:nth-of-type(1) .default-content-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  align-items: center;
-  gap: 32px;
-  width: 100%;
-}
-
-main > .section:nth-of-type(1) .default-content-wrapper > p:last-child picture {
-  display: block;
-}
-
-/* Text elements go in column 1 */
-main > .section:nth-of-type(1) .default-content-wrapper > h1 {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-main > .section:nth-of-type(1) .default-content-wrapper > p:not(:last-child) {
-  grid-column: 1;
-}
-
-/* Last p contains the picture — put in column 2, span all rows */
-main > .section:nth-of-type(1) .default-content-wrapper > p:last-child {
-  grid-column: 2;
-  grid-row: 1 / 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-main > .section:nth-of-type(1) .default-content-wrapper > p:last-child img {
-  width: 100%;
-  max-width: 560px;
-  height: auto;
-  border-radius: 16px 16px 0 0;
-  display: block;
-}
-
 /* ============================================================
-   Section 2 — Awards
-   White bg, centered heading, logos in flex row
+   Section: Awards (.section.awards-container)
+   White background
    ============================================================ */
-main > .section:nth-of-type(2) {
+main > .section.awards-container {
   background-color: var(--xero-white);
-  padding: 48px 0;
-  border-bottom: 1px solid #E8E8E8;
-}
-
-main > .section:nth-of-type(2) h2 {
-  font-size: 28px;
-  color: var(--xero-navy);
-  text-align: center;
-  margin-bottom: 8px;
-}
-
-main > .section:nth-of-type(2) .default-content-wrapper > p:not(:has(picture)) {
-  text-align: center;
-  color: var(--xero-mid-gray);
-  margin-bottom: 32px;
-}
-
-main > .section:nth-of-type(2) .default-content-wrapper {
-  text-align: center;
-}
-
-/* Awards logos row */
-main > .section:nth-of-type(2) .default-content-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-main > .section:nth-of-type(2) .default-content-wrapper > p:has(picture) {
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  margin: 0;
-}
-
-/* All picture paragraphs after the first text ones — form the logo strip */
-main > .section:nth-of-type(2) .default-content-wrapper {
-  display: block;
-  text-align: center;
-}
-
-main > .section:nth-of-type(2) .default-content-wrapper > p {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-main > .section:nth-of-type(2) .default-content-wrapper img {
-  height: 80px;
-  width: auto;
-  filter: grayscale(100%);
-  opacity: 0.7;
-  transition: filter 0.2s ease, opacity 0.2s ease;
-  margin: 12px;
-}
-
-main > .section:nth-of-type(2) .default-content-wrapper img:hover {
-  filter: grayscale(0%);
-  opacity: 1;
 }
 
 /* ============================================================
-   Sections 3–9 — Highlight / Feature sections
-   Alternating: text left/image right, or image left/text right
+   Section: JAX Highlight (.section.highlight-container:first)
+   Light blue-gray background for JAX section
    ============================================================ */
-
-/* Shared highlight styles */
-main > .section:nth-of-type(n+3) {
-  padding: 72px 0;
+main > .section.highlight-container:nth-child(3) {
+  background-color: #EDF6FB;
 }
 
-main > .section:nth-of-type(n+3) .default-content-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
+/* ============================================================
+   Section: Columns (.section.columns-container)
+   White background, heading above block
+   ============================================================ */
+main > .section.columns-container {
+  background-color: var(--xero-white);
 }
 
-main > .section:nth-of-type(n+3) h2 {
+main > .section.columns-container .default-content-wrapper {
+  padding-bottom: 32px;
+}
+
+main > .section.columns-container .default-content-wrapper h2 {
   font-size: 36px;
   color: var(--xero-navy);
   margin-top: 0;
-  margin-bottom: 16px;
-  grid-column: 1;
-}
-
-main > .section:nth-of-type(n+3) p:not(:has(picture)):not(.button-wrapper) {
-  color: var(--xero-dark-blue);
-  font-size: 16px;
-  line-height: 1.7;
   margin-bottom: 12px;
 }
 
-main > .section:nth-of-type(n+3) ul {
+main > .section.columns-container .default-content-wrapper p {
   color: var(--xero-dark-blue);
-  padding-left: 20px;
-  margin: 12px 0 20px;
-  line-height: 1.7;
+  font-size: 16px;
+  margin-bottom: 0;
 }
 
-main > .section:nth-of-type(n+3) ul li {
+main > .section.columns-container .default-content-wrapper a {
+  color: var(--xero-blue);
+  font-weight: 600;
+}
+
+/* ============================================================
+   Section: Cards — Pricing (.section.cards-container:nth-child(5))
+   Light gray background
+   ============================================================ */
+main > .section.cards-container:nth-child(5) {
+  background-color: var(--xero-light-gray);
+}
+
+main > .section.cards-container:nth-child(5) .default-content-wrapper {
+  padding-bottom: 32px;
+}
+
+main > .section.cards-container:nth-child(5) .default-content-wrapper h2 {
+  font-size: 36px;
+  color: var(--xero-navy);
+  margin-top: 0;
   margin-bottom: 8px;
 }
 
-main > .section:nth-of-type(n+3) a:not(.button) {
+main > .section.cards-container:nth-child(5) .default-content-wrapper p {
+  color: var(--xero-dark-blue);
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+main > .section.cards-container:nth-child(5) .default-content-wrapper a {
   color: var(--xero-blue);
   font-weight: 600;
-  text-decoration: none;
 }
 
-main > .section:nth-of-type(n+3) a:not(.button):hover {
-  text-decoration: underline;
-}
-
-/* Picture paragraphs — right column */
-main > .section:nth-of-type(n+3) .default-content-wrapper > p:has(picture) {
-  grid-column: 2;
-  grid-row: 1 / 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-main > .section:nth-of-type(n+3) .default-content-wrapper > p:has(picture) img {
-  width: 100%;
-  max-width: 540px;
-  height: auto;
-  border-radius: 12px;
-  display: block;
-}
-
-/* Text content spans column 1 */
-main > .section:nth-of-type(n+3) .default-content-wrapper > h2,
-main > .section:nth-of-type(n+3) .default-content-wrapper > h3,
-main > .section:nth-of-type(n+3) .default-content-wrapper > p:not(:has(picture)),
-main > .section:nth-of-type(n+3) .default-content-wrapper > ul,
-main > .section:nth-of-type(n+3) .default-content-wrapper > .button-wrapper {
-  grid-column: 1;
-}
-
-/* Alternate sections: image left, text right (even sections starting from 3rd) */
-main > .section:nth-of-type(even):nth-of-type(n+4) .default-content-wrapper {
-  direction: rtl;
-}
-
-main > .section:nth-of-type(even):nth-of-type(n+4) .default-content-wrapper > * {
-  direction: ltr;
-}
-
-/* Section-specific background treatments */
-/* Section 3: JAX AI — light blue-gray bg */
-main > .section:nth-of-type(3) {
-  background-color: #F0F4F8;
-}
-
-/* Section 5: Pricing — light gray */
-main > .section:nth-of-type(5) {
-  background-color: var(--xero-light-gray);
-}
-
-/* Section 6: Business types */
-main > .section:nth-of-type(6) {
+/* ============================================================
+   Section: Cards — Business types (.section.cards-container:nth-child(6))
+   White background
+   ============================================================ */
+main > .section.cards-container:nth-child(6) {
   background-color: var(--xero-white);
 }
 
-/* Section 7: Integrations — dark navy */
-main > .section:nth-of-type(7) {
+main > .section.cards-container:nth-child(6) .default-content-wrapper {
+  padding-bottom: 32px;
+}
+
+main > .section.cards-container:nth-child(6) .default-content-wrapper h2 {
+  font-size: 36px;
+  color: var(--xero-navy);
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+main > .section.cards-container:nth-child(6) .default-content-wrapper p {
+  color: var(--xero-dark-blue);
+  margin-bottom: 0;
+}
+
+main > .section.cards-container:nth-child(6) .default-content-wrapper a {
+  color: var(--xero-blue);
+  font-weight: 600;
+}
+
+/* ============================================================
+   Section: Highlight blocks (sections 7-10)
+   Individual backgrounds set via nth-child in highlight.css
+   ============================================================ */
+main > .section.highlight-container {
+  background-color: var(--xero-white);
+  padding: 0;
+}
+
+/* Override for dark sections (integrations + accountants) */
+main > .section.highlight-container:nth-child(7) {
   background-color: var(--xero-navy);
 }
 
-main > .section:nth-of-type(7) h2 {
-  color: var(--xero-white);
+main > .section.highlight-container:nth-child(8) {
+  background-color: var(--xero-navy);
 }
 
-main > .section:nth-of-type(7) p:not(:has(picture)):not(.button-wrapper) {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-main > .section:nth-of-type(7) a:not(.button) {
-  color: var(--xero-teal);
-}
-
-main > .section:nth-of-type(7) a.button {
-  background-color: transparent;
-  border-color: var(--xero-teal);
-  color: var(--xero-teal);
-}
-
-main > .section:nth-of-type(7) a.button:hover {
-  background-color: var(--xero-teal);
-  color: var(--xero-navy);
-}
-
-/* Section 8: Accountants — light gray */
-main > .section:nth-of-type(8) {
-  background-color: var(--xero-light-gray);
-}
-
-/* Section 9: Get paid — white */
-main > .section:nth-of-type(9) {
-  background-color: var(--xero-white);
-}
-
-/* Section 10: Affiliate — white */
-main > .section:nth-of-type(10) {
-  background-color: var(--xero-white);
-}
-
-/* Section 11: CTA "Start using Xero for free" — dark navy */
-main > .section:nth-of-type(11) {
+/* ============================================================
+   Section: Dark CTA band (.section.dark)
+   Dark navy background, centered text
+   ============================================================ */
+main > .section.dark {
   background-color: var(--xero-navy);
   text-align: center;
 }
 
-main > .section:nth-of-type(11) h2 {
-  color: var(--xero-white);
+main > .section.dark .default-content-wrapper {
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+main > .section.dark h2 {
   font-size: 40px;
+  color: var(--xero-white);
+  margin-top: 0;
   margin-bottom: 16px;
 }
 
-main > .section:nth-of-type(11) p:not(.button-wrapper) {
+main > .section.dark p:not(.button-wrapper) {
   color: rgba(255, 255, 255, 0.85);
   font-size: 18px;
+  margin-bottom: 8px;
 }
 
-main > .section:nth-of-type(11) .default-content-wrapper {
-  display: block;
-  text-align: center;
-}
-
-main > .section:nth-of-type(11) .button-wrapper {
+main > .section.dark .button-wrapper {
   justify-content: center;
   gap: 16px;
+  margin-top: 24px;
 }
 
-/* Section 12: Legal / disclaimer */
-main > .section:nth-of-type(12) {
-  padding: 24px 0;
+main > .section.dark a:not(.button) {
+  color: var(--xero-teal);
+  font-weight: 600;
+  display: block;
+  margin-top: 8px;
+}
+
+main > .section.dark a:not(.button):hover {
+  color: var(--xero-teal);
+  text-decoration: underline;
+}
+
+/* ============================================================
+   Section: Footnote (last section)
+   Light gray bg, small centered text
+   ============================================================ */
+main > .section:last-child {
   background-color: var(--xero-white);
   border-top: 1px solid #E8E8E8;
 }
 
-main > .section:nth-of-type(12) p {
+main > .section:last-child .default-content-wrapper {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+main > .section:last-child p {
   font-size: 13px;
   color: var(--xero-mid-gray);
   text-align: center;
-}
-
-main > .section:nth-of-type(12) .default-content-wrapper {
-  display: block;
-}
-
-/* ============================================================
-   Section 4 — "Run your business" feature grid
-   3-column layout for the h3 features
-   ============================================================ */
-main > .section:nth-of-type(4) .default-content-wrapper {
-  display: block;
-}
-
-main > .section:nth-of-type(4) h2 {
-  font-size: 36px;
-  color: var(--xero-navy);
-  margin-bottom: 8px;
-}
-
-main > .section:nth-of-type(4) h2 + p {
-  color: var(--xero-dark-blue);
-  font-size: 16px;
-  margin-bottom: 40px;
-}
-
-main > .section:nth-of-type(4) h2 + p a {
-  color: var(--xero-blue);
-  font-weight: 600;
-}
-
-/* Feature cards container */
-main > .section:nth-of-type(4) .default-content-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 0 32px;
-}
-
-main > .section:nth-of-type(4) h2 {
-  grid-column: 1 / -1;
-}
-
-main > .section:nth-of-type(4) h2 + p {
-  grid-column: 1 / -1;
-}
-
-main > .section:nth-of-type(4) h3 {
-  font-size: 20px;
-  color: var(--xero-navy);
-  margin-top: 0;
-  margin-bottom: 8px;
-  padding-top: 24px;
-  border-top: 3px solid var(--xero-teal);
-}
-
-main > .section:nth-of-type(4) h3 + p {
-  color: var(--xero-dark-blue);
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-/* ============================================================
-   Section 5 — Pricing Plans
-   Card layout for the pricing tiers
-   ============================================================ */
-main > .section:nth-of-type(5) .default-content-wrapper {
-  display: block;
-}
-
-main > .section:nth-of-type(5) h2 {
-  font-size: 36px;
-  color: var(--xero-navy);
-  margin-bottom: 32px;
-  text-align: center;
-  grid-column: 1 / -1;
-}
-
-/* Pricing grid */
-main > .section:nth-of-type(5) .default-content-wrapper {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-}
-
-main > .section:nth-of-type(5) h2 {
-  grid-column: 1;
-}
-
-/* Each pricing plan: h3 + associated paragraphs */
-main > .section:nth-of-type(5) h3 {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--xero-navy);
-  padding: 24px 24px 0;
   margin: 0;
-  background: var(--xero-white);
-  border: 1px solid #E0E4E8;
-  border-bottom: none;
-  border-radius: 8px 8px 0 0;
-}
-
-/* Pricing cards via CSS: wrap each pricing card */
-main > .section:nth-of-type(5) .pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: 24px;
-}
-
-/* ============================================================
-   Section 6 — Business Types
-   Card grid with image + title + description
-   ============================================================ */
-main > .section:nth-of-type(6) h2 {
-  font-size: 36px;
-  color: var(--xero-navy);
-  margin-bottom: 8px;
-}
-
-main > .section:nth-of-type(6) h2 + p {
-  color: var(--xero-dark-blue);
-  margin-bottom: 32px;
-}
-
-main > .section:nth-of-type(6) h2 + p a {
-  color: var(--xero-blue);
-  font-weight: 600;
-}
-
-main > .section:nth-of-type(6) .default-content-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 24px;
-}
-
-main > .section:nth-of-type(6) h2,
-main > .section:nth-of-type(6) p:first-of-type {
-  grid-column: 1 / -1;
-}
-
-main > .section:nth-of-type(6) h3 {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--xero-navy);
-  margin-top: 12px;
-  margin-bottom: 8px;
-}
-
-main > .section:nth-of-type(6) h3 + p {
-  color: var(--xero-dark-blue);
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-main > .section:nth-of-type(6) p:has(picture) {
-  margin: 0;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-main > .section:nth-of-type(6) p:has(picture) img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  display: block;
 }
 
 /* ============================================================
@@ -747,73 +432,24 @@ main > .section:nth-of-type(6) p:has(picture) img {
     --heading-font-size-l:   24px;
   }
 
-  main > .section > div,
-  main > .section:nth-of-type(1) > div {
+  main > .section .default-content-wrapper {
     padding: 48px 20px;
   }
 
-  /* Hero stacks on mobile */
-  main > .section:nth-of-type(1) .default-content-wrapper {
-    grid-template-columns: 1fr;
+  main > .section.columns-container .default-content-wrapper {
+    padding-bottom: 24px;
   }
 
-  main > .section:nth-of-type(1) h1 {
-    font-size: 36px;
+  main > .section.cards-container:nth-child(5) .default-content-wrapper,
+  main > .section.cards-container:nth-child(6) .default-content-wrapper {
+    padding-bottom: 24px;
   }
 
-  main > .section:nth-of-type(1) .default-content-wrapper > p:last-child {
-    grid-column: 1;
-    grid-row: auto;
+  main > .section.dark .default-content-wrapper {
+    padding: 56px 20px;
   }
 
-  main > .section:nth-of-type(1) .default-content-wrapper > p:last-child img {
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    margin: 0 auto;
-  }
-
-  /* All highlight sections stack on mobile */
-  main > .section:nth-of-type(n+3) .default-content-wrapper {
-    grid-template-columns: 1fr;
-  }
-
-  main > .section:nth-of-type(n+3) .default-content-wrapper > p:has(picture) {
-    grid-column: 1;
-    grid-row: auto;
-    order: -1;
-  }
-
-  main > .section:nth-of-type(n+3) .default-content-wrapper > h2,
-  main > .section:nth-of-type(n+3) .default-content-wrapper > h3,
-  main > .section:nth-of-type(n+3) .default-content-wrapper > p,
-  main > .section:nth-of-type(n+3) .default-content-wrapper > ul,
-  main > .section:nth-of-type(n+3) .default-content-wrapper > .button-wrapper {
-    grid-column: 1;
-  }
-
-  /* Feature grid stacks */
-  main > .section:nth-of-type(4) .default-content-wrapper,
-  main > .section:nth-of-type(6) .default-content-wrapper {
-    grid-template-columns: 1fr;
-  }
-
-  main > .section:nth-of-type(4) h2,
-  main > .section:nth-of-type(4) h2 + p,
-  main > .section:nth-of-type(6) h2,
-  main > .section:nth-of-type(6) h2 + p {
-    grid-column: 1;
-  }
-
-  /* Awards wrap */
-  main > .section:nth-of-type(2) .default-content-wrapper img {
-    height: 60px;
-  }
-
-  /* CTA section on mobile */
-  main > .section:nth-of-type(11) {
-    text-align: center;
-    padding: 48px 20px;
+  main > .section.dark h2 {
+    font-size: 32px;
   }
 }

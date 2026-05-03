@@ -1,7 +1,7 @@
 /* ============================================================
    Highlight Block
    Two-column layout: text (left) + image (right)
-   Alternates with .highlight.image-left variant
+   Variants: image-left, dark
    ============================================================ */
 
 .highlight-wrapper {
@@ -22,14 +22,14 @@
   align-items: center;
 }
 
-/* Text column */
+/* Text column (first cell) */
 .highlight.block > div > div:first-child {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* Image column */
+/* Image column (second cell) */
 .highlight.block > div > div:last-child {
   display: flex;
   align-items: center;
@@ -102,7 +102,7 @@
 
 .highlight.block img {
   width: 100%;
-  max-width: 540px;
+  max-width: 560px;
   height: auto;
   border-radius: 12px;
   display: block;
@@ -121,8 +121,54 @@
 }
 
 /* ============================================================
-   Variant: dark background
-   Add class "dark" to the block
+   Dark highlight sections via section nth-child
+   Sections 6 and 7 (zero-indexed) = highlight-containers at position 7 and 8 (1-indexed)
+   These are "Set customisation to cruise control" and "Accountants and bookkeepers"
+   ============================================================ */
+
+/* Section index 6 (7th section overall = 5th highlight-container) = integrations */
+main > .section.highlight-container:nth-child(7) .highlight-wrapper,
+main > .section.highlight-container:nth-child(8) .highlight-wrapper {
+  background-color: var(--xero-navy);
+}
+
+main > .section.highlight-container:nth-child(7) .highlight.block h2,
+main > .section.highlight-container:nth-child(7) .highlight.block h3,
+main > .section.highlight-container:nth-child(8) .highlight.block h2,
+main > .section.highlight-container:nth-child(8) .highlight.block h3 {
+  color: var(--xero-white);
+}
+
+main > .section.highlight-container:nth-child(7) .highlight.block p:not(.button-wrapper),
+main > .section.highlight-container:nth-child(8) .highlight.block p:not(.button-wrapper) {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+main > .section.highlight-container:nth-child(7) .highlight.block ul li,
+main > .section.highlight-container:nth-child(8) .highlight.block ul li {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+main > .section.highlight-container:nth-child(7) .highlight.block a:not(.button),
+main > .section.highlight-container:nth-child(8) .highlight.block a:not(.button) {
+  color: var(--xero-teal);
+}
+
+main > .section.highlight-container:nth-child(7) .highlight.block a.button,
+main > .section.highlight-container:nth-child(8) .highlight.block a.button {
+  border-color: var(--xero-teal);
+  background-color: transparent;
+  color: var(--xero-teal);
+}
+
+main > .section.highlight-container:nth-child(7) .highlight.block a.button:hover,
+main > .section.highlight-container:nth-child(8) .highlight.block a.button:hover {
+  background-color: var(--xero-teal);
+  color: var(--xero-navy);
+}
+
+/* ============================================================
+   Explicit dark variant (via class on block)
    ============================================================ */
 .highlight-wrapper.dark,
 .highlight.block.dark {
@@ -177,6 +223,7 @@
 
   .highlight.block img {
     border-radius: 8px;
+    max-width: 100%;
   }
 
   .highlight.block {

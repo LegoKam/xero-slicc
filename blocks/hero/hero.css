@@ -16,10 +16,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
-  align-items: center;
+  align-items: end;
 }
 
-/* EDS wraps content in > div > div (rows > cells) */
+/* EDS wraps content in > div > div — use display:contents to expose cells to grid */
 .hero.block > div {
   display: contents;
 }
@@ -30,13 +30,16 @@
   flex-direction: column;
   justify-content: center;
   align-self: center;
+  padding-bottom: 80px;
 }
 
-/* Image column — right */
-.hero.block > div > div:last-child {
+/* Image column — right (has class .hero-image added by hero.js) */
+.hero.block > div > div:last-child,
+.hero.block > div > .hero-image {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  align-self: end;
 }
 
 /* Headings */
@@ -99,6 +102,7 @@
   height: auto;
   display: block;
   border-radius: 16px 16px 0 0;
+  object-fit: cover;
 }
 
 /* ============================================================
@@ -112,21 +116,29 @@
     gap: 32px;
   }
 
+  .hero.block > div > div:first-child {
+    padding-bottom: 0;
+    align-self: auto;
+  }
+
   .hero.block h1 {
     font-size: 36px;
   }
 
-  /* Image comes first on mobile */
-  .hero.block > div > div:last-child {
-    order: -1;
+  /* Image comes after text on mobile, no circular crop */
+  .hero.block > div > div:last-child,
+  .hero.block > div > .hero-image {
+    align-self: auto;
+    order: 2;
+  }
+
+  .hero.block > div > div:first-child {
+    order: 1;
   }
 
   .hero.block img {
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    margin: 0 auto;
-    max-width: 200px;
+    border-radius: 12px 12px 0 0;
+    width: 100%;
+    max-width: 100%;
   }
 }

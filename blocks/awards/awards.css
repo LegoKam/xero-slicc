@@ -1,6 +1,7 @@
 /* ============================================================
    Awards Block
    White bg, centered heading, award logos in a flex row
+   The logo images are all inside a single <p> tag in the last row's cell
    ============================================================ */
 
 .awards-wrapper {
@@ -15,23 +16,21 @@
   text-align: center;
 }
 
-/* EDS row/cell wrapper */
+/* Row: display as column, centered */
 .awards.block > div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
 }
 
+/* All cells */
 .awards.block > div > div {
   width: 100%;
-}
-
-/* Heading cell */
-.awards.block > div > div:first-child {
   text-align: center;
 }
 
+/* Heading cell (first row, first cell) */
 .awards.block h2 {
   font-size: 28px;
   font-weight: 700;
@@ -46,26 +45,46 @@
   margin: 0;
 }
 
-/* Logo row cell */
-.awards.block > div > div:last-child {
+/* Logo row: the second row's cell contains a <p> with multiple <picture> elements inline */
+.awards.block > div:last-child > div {
+  /* nothing needed — the p inside handles it */
+}
+
+/* The paragraph containing all logo pictures */
+.awards.block > div:last-child > div > p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 16px 32px;
+  margin: 0;
 }
 
-.awards.block > div > div:last-child picture {
+/* Also handle if logos are in any p with pictures */
+.awards.block p:has(picture) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px 32px;
+  margin: 0;
+}
+
+/* Each picture element */
+.awards.block picture {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
+/* Logo images */
 .awards.block img {
   height: 80px;
   width: auto;
-  max-width: 120px;
+  max-width: 130px;
   object-fit: contain;
+  display: block;
   filter: grayscale(100%);
   opacity: 0.65;
   transition: filter 0.25s ease, opacity 0.25s ease;
@@ -82,9 +101,14 @@
 @media (max-width: 599px) {
   .awards.block img {
     height: 56px;
+    max-width: 90px;
   }
 
   .awards.block h2 {
     font-size: 22px;
+  }
+
+  .awards.block p:has(picture) {
+    gap: 12px 20px;
   }
 }
