@@ -1,9 +1,44 @@
-@import url('brand.css');
+/* ============================================================
+   Xero Brand Tokens (inlined from brand.css to avoid render-blocking @import)
+   ============================================================ */
+:root {
+  --xero-navy:        rgb(0, 120, 200);
+  --xero-dark-blue:   #213B55;
+  --xero-teal:        rgb(0, 120, 200);
+  --xero-blue:        #0078C8;
+  --xero-light-blue:  #13B5EA;
+  --xero-promo-bar:   #BBF3FD;
+  --xero-white:       #FFFFFF;
+  --xero-light-gray:  #F5F5F5;
+  --xero-mid-gray:    #8E949F;
+  --background-color:   var(--xero-white);
+  --light-color:        var(--xero-light-gray);
+  --dark-color:         var(--xero-dark-blue);
+  --text-color:         var(--xero-dark-blue);
+  --link-color:         var(--xero-blue);
+  --link-hover-color:   var(--xero-dark-blue);
+  --body-font-family:    "National2", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --heading-font-family: "National2", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --heading-font-size-xxl: 72px;
+  --heading-font-size-xl:  40px;
+  --heading-font-size-l:   28px;
+  --heading-font-size-m:   22px;
+  --heading-font-size-s:   18px;
+  --heading-font-size-xs:  16px;
+  --body-font-size-m: 18px;
+  --body-font-size-s: 16px;
+  --body-font-size-xs: 14px;
+  --section-padding: 64px 0;
+  --nav-height: 70px;
+  --btn-radius: 3px;
+  --btn-padding: 12px 20px;
+  --btn-font-size: 15px;
+  --btn-font-weight: 700;
+}
+
+html, body { overflow: auto !important; }
 
 /*
- * Copyright 2020 Adobe. All rights reserved.
- * Licensed under the Apache License, Version 2.0.
- */
 
 /* ============================================================
    Root / Custom Properties

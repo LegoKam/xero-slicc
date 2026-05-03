@@ -44,5 +44,11 @@ export default function decorate(block) {
     if (imgCell) {
       imgCell.classList.add('hero-image');
     }
+    // LCP image — eager load + high fetch priority
+    const img = picture.querySelector('img');
+    if (img) {
+      img.loading = 'eager';
+      img.fetchpriority = 'high';
+    }
   }
 }
