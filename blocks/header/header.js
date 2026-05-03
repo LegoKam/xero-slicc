@@ -86,8 +86,8 @@ export default async function decorate(block) {
 
   // 1. Promo bar — first <p> (no <strong>)
   const promoP = children.find((el) => el.tagName === 'P' && !el.querySelector('strong'));
-  // 2. Logo — <a> with picture (direct child of navContent)
-  const logoA = children.find((el) => el.tagName === 'A' && el.querySelector('picture, img'));
+  // 2. Logo — <p> or <a> containing a picture/img (but not the promo bar)
+  const logoA = children.find((el) => (el.tagName === 'A' || el.tagName === 'P') && el.querySelector('picture, img') && !el.querySelector('strong'));
   // 3. Nav list — <ul>
   const navUl = children.find((el) => el.tagName === 'UL');
   // 4. CTA — <p> that contains a <strong> (Try Xero for free button)
@@ -111,9 +111,12 @@ export default async function decorate(block) {
     const logoWrap = document.createElement('div');
     logoWrap.className = 'nav-logo';
     const a = document.createElement('a');
-    a.href = logoA.href || '/';
+    // If the element itself is an <a>, use its href; otherwise look for nested <a>
+    const innerA = logoA.tagName === 'A' ? logoA : logoA.querySelector('a');
+    a.href = innerA ? innerA.href : '/';
     a.setAttribute('aria-label', 'Xero home');
-    a.appendChild(logoA.querySelector('picture').cloneNode(true));
+    const pic = logoA.querySelector('picture, img');
+    if (pic) a.appendChild(pic.cloneNode(true));
     logoWrap.appendChild(a);
     navBar.appendChild(logoWrap);
   }
