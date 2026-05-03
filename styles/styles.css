@@ -404,7 +404,7 @@ main > .section:nth-child(11) .button-wrapper {
 
 main > .section.dark a:not(.button),
 main > .section:nth-child(11) a:not(.button) {
-  color: var(--xero-teal);
+  color: var(--xero-white);
   font-weight: 600;
   display: block;
   margin-top: 8px;
@@ -412,8 +412,22 @@ main > .section:nth-child(11) a:not(.button) {
 
 main > .section.dark a:not(.button):hover,
 main > .section:nth-child(11) a:not(.button):hover {
-  color: var(--xero-teal);
+  color: var(--xero-white);
   text-decoration: underline;
+}
+
+main > .section.dark .button.accent,
+main > .section:nth-child(11) .button.accent {
+  background-color: var(--xero-white);
+  border-color: var(--xero-white);
+  color: var(--xero-dark-blue);
+}
+
+main > .section.dark .button.accent:hover,
+main > .section:nth-child(11) .button.accent:hover {
+  background-color: transparent;
+  border-color: var(--xero-white);
+  color: var(--xero-white);
 }
 
 /* ============================================================
