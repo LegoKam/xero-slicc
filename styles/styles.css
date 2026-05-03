@@ -361,7 +361,14 @@ main > .section.columns-container:nth-child(7) .columns.block {
 main > .section.columns-container:nth-child(7) .columns.block > div {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
+  gap: 8px;
+}
+
+/* Gap between rows too */
+main > .section.columns-container:nth-child(7) .columns.block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 /* Every tile */
