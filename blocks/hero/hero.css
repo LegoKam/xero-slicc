@@ -90,7 +90,7 @@
 }
 
 .hero.block a:not(.button) {
-  color: var(--xero-teal);
+  color: var(--xero-white);
   text-decoration: underline;
 }
 
