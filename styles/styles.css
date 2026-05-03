@@ -356,66 +356,84 @@ main > .section.highlight-container:nth-child(8) {
 }
 
 /* ============================================================
-   Section: Dark CTA band (.section.dark)
+   Section: Dark CTA band
+   Targets: .section.dark (from section-metadata) OR nth-child(11) fallback
    Dark navy background, centered text
    ============================================================ */
-main > .section.dark {
+main > .section.dark,
+main > .section:nth-child(11) {
   background-color: var(--xero-navy);
   text-align: center;
 }
 
-main > .section.dark .default-content-wrapper {
+main > .section.dark .default-content-wrapper,
+main > .section:nth-child(11) .default-content-wrapper {
   text-align: center;
   padding-top: 80px;
   padding-bottom: 80px;
 }
 
-main > .section.dark h2 {
+main > .section.dark h2,
+main > .section:nth-child(11) h2 {
   font-size: 40px;
   color: var(--xero-white);
   margin-top: 0;
   margin-bottom: 16px;
 }
 
-main > .section.dark p:not(.button-wrapper) {
+main > .section.dark p:not(.button-wrapper),
+main > .section:nth-child(11) p:not(.button-wrapper) {
   color: rgba(255, 255, 255, 0.85);
   font-size: 18px;
   margin-bottom: 8px;
 }
 
-main > .section.dark .button-wrapper {
+/* Hide metadata leakage (style/dark text paragraphs from section-metadata)
+   These appear as the last 2 bare <p> tags with no links */
+main > .section:nth-child(11) .default-content-wrapper p:nth-last-child(1):not(.button-wrapper),
+main > .section:nth-child(11) .default-content-wrapper p:nth-last-child(2):not(.button-wrapper):not(:has(a)) {
+  display: none;
+}
+
+main > .section.dark .button-wrapper,
+main > .section:nth-child(11) .button-wrapper {
   justify-content: center;
   gap: 16px;
   margin-top: 24px;
 }
 
-main > .section.dark a:not(.button) {
+main > .section.dark a:not(.button),
+main > .section:nth-child(11) a:not(.button) {
   color: var(--xero-teal);
   font-weight: 600;
   display: block;
   margin-top: 8px;
 }
 
-main > .section.dark a:not(.button):hover {
+main > .section.dark a:not(.button):hover,
+main > .section:nth-child(11) a:not(.button):hover {
   color: var(--xero-teal);
   text-decoration: underline;
 }
 
 /* ============================================================
-   Section: Footnote (last section)
-   Light gray bg, small centered text
+   Section: Footnote (last section = nth-child(12))
+   White bg, small centered text
    ============================================================ */
-main > .section:last-child {
+main > .section:last-child,
+main > .section:nth-child(12) {
   background-color: var(--xero-white);
   border-top: 1px solid #E8E8E8;
 }
 
-main > .section:last-child .default-content-wrapper {
+main > .section:last-child .default-content-wrapper,
+main > .section:nth-child(12) .default-content-wrapper {
   padding-top: 24px;
   padding-bottom: 24px;
 }
 
-main > .section:last-child p {
+main > .section:last-child p,
+main > .section:nth-child(12) p {
   font-size: 13px;
   color: var(--xero-mid-gray);
   text-align: center;
@@ -445,11 +463,13 @@ main > .section:last-child p {
     padding-bottom: 24px;
   }
 
-  main > .section.dark .default-content-wrapper {
+  main > .section.dark .default-content-wrapper,
+  main > .section:nth-child(11) .default-content-wrapper {
     padding: 56px 20px;
   }
 
-  main > .section.dark h2 {
+  main > .section.dark h2,
+  main > .section:nth-child(11) h2 {
     font-size: 32px;
   }
 }
