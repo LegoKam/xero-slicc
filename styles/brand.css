@@ -3,7 +3,7 @@
    ============================================================ */
 :root {
   /* Xero color palette */
-  --xero-navy:        #172C40;
+  --xero-navy:        rgb(0, 120, 200);
   --xero-dark-blue:   #213B55;
   --xero-teal:        rgb(0, 120, 200);
   --xero-blue:        #0078C8;
