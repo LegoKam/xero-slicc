@@ -72,9 +72,9 @@
 
 .hero.block a.button.accent,
 .hero.block a.button.primary {
-  background-color: var(--xero-teal);
-  border-color: var(--xero-teal);
-  color: var(--xero-navy);
+  background-color: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
   font-size: 16px;
   font-weight: 700;
   padding: 14px 28px;
@@ -82,9 +82,11 @@
   text-decoration: none;
 }
 
-.hero.block a.button.accent:hover {
-  background-color: #3ecb99;
-  border-color: #3ecb99;
+.hero.block a.button.accent:hover,
+.hero.block a.button.primary:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+  color: #ffffff;
 }
 
 .hero.block a:not(.button) {
