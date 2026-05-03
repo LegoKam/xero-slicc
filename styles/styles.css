@@ -338,6 +338,156 @@ main > .section.cards-container:nth-child(6) .default-content-wrapper a {
 }
 
 /* ============================================================
+   Section: 2x2 Panel Grid (.section.columns-container:nth-child(7))
+   Four tiles: blue | dark | light | dark — matching Xero's layout
+   ============================================================ */
+main > .section.columns-container:nth-child(7) {
+  background-color: transparent;
+  padding: 0;
+}
+
+main > .section.columns-container:nth-child(7) .columns-wrapper {
+  background-color: transparent;
+  padding: 0;
+}
+
+main > .section.columns-container:nth-child(7) .columns.block {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* Each row = one row of 2 tiles */
+main > .section.columns-container:nth-child(7) .columns.block > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+/* Every tile */
+main > .section.columns-container:nth-child(7) .columns.block > div > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 56px 48px 0;
+  overflow: hidden;
+  min-height: 420px;
+}
+
+/* Tile backgrounds by position */
+/* Row 1, tile 1 — blue (integrations) */
+main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(1) > div:nth-child(1) {
+  background-color: #0078C8;
+}
+
+/* Row 1, tile 2 — dark navy (accountants) */
+main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(1) > div:nth-child(2) {
+  background-color: #172C40;
+}
+
+/* Row 2, tile 1 — light gray/white (get paid) */
+main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(2) > div:nth-child(1) {
+  background-color: #F5F5F5;
+}
+
+/* Row 2, tile 2 — dark navy (affiliate) */
+main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(2) > div:nth-child(2) {
+  background-color: #172C40;
+}
+
+/* Headings in dark/blue tiles — white */
+main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(1) > div h2,
+main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(1) > div h3,
+main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(2) > div:nth-child(2) h2,
+main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(2) > div:nth-child(2) h3 {
+  color: #ffffff;
+  border-top: none;
+  padding-top: 0;
+}
+
+/* Body text in dark/blue tiles — white */
+main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(1) > div p,
+main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(2) > div:nth-child(2) p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Links in dark/blue tiles — white underline */
+main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(1) > div a,
+main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(2) > div:nth-child(2) a {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Headings in light tile — dark */
+main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(2) > div:nth-child(1) h2,
+main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(2) > div:nth-child(1) h3 {
+  color: #172C40;
+  border-top: none;
+  padding-top: 0;
+}
+
+main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(2) > div:nth-child(1) p {
+  color: #213B55;
+}
+
+main > .section.columns-container:nth-child(7) .columns.block > div:nth-child(2) > div:nth-child(1) a {
+  color: #0078C8;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Reset columns.css overrides for h3 in this grid */
+main > .section.columns-container:nth-child(7) .columns.block h2,
+main > .section.columns-container:nth-child(7) .columns.block h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+main > .section.columns-container:nth-child(7) .columns.block p {
+  font-size: 15px;
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+
+/* Images — grow to fill bottom of tile, centered */
+main > .section.columns-container:nth-child(7) .columns.block > div > div > p:last-of-type picture,
+main > .section.columns-container:nth-child(7) .columns.block > div > div picture:last-of-type {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+main > .section.columns-container:nth-child(7) .columns.block img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 260px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Responsive — stack to 1 column */
+@media (max-width: 899px) {
+  main > .section.columns-container:nth-child(7) .columns.block > div {
+    grid-template-columns: 1fr;
+  }
+
+  main > .section.columns-container:nth-child(7) .columns.block > div > div {
+    min-height: 360px;
+    padding: 48px 32px 0;
+  }
+
+  main > .section.columns-container:nth-child(7) .columns.block img {
+    max-height: 200px;
+  }
+}
+
+/* ============================================================
    Section: Highlight blocks (sections 7-10)
    Individual backgrounds set via nth-child in highlight.css
    ============================================================ */
