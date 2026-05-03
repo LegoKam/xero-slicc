@@ -105,8 +105,10 @@
   width: 100%;
   max-width: 560px;
   height: auto;
+  aspect-ratio: 16 / 10; /* reserve space before image loads, prevents CLS */
   border-radius: 12px;
   display: block;
+  object-fit: cover;
 }
 
 /* ============================================================
