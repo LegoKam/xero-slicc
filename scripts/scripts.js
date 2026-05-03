@@ -168,6 +168,11 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  // Ensure all images below the fold load eagerly after sections are initialized
+  doc.querySelectorAll('img[loading="lazy"]').forEach((img) => {
+    img.loading = 'eager';
+  });
 }
 
 /**

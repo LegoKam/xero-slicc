@@ -1,6 +1,6 @@
 /* ============================================================
-   Hero Block
-   Dark navy background, two-column: text left, image right
+   Hero Block — Xero AU style
+   Dark navy bg, two-column: text left, image bottom-right
    ============================================================ */
 
 .hero-wrapper {
@@ -11,35 +11,37 @@
 .hero.block {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 32px 0;
-  min-height: 520px;
+  padding: 72px 32px 0;
+  min-height: 540px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: 40px;
   align-items: end;
 }
 
-/* EDS wraps content in > div > div — use display:contents to expose cells to grid */
+/* EDS wraps content in > div > div — expose cells to grid */
 .hero.block > div {
   display: contents;
 }
 
 /* Text column — left */
-.hero.block > div > div:first-child {
+.hero.block > div > div:first-child,
+.hero.block > div > .hero-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-self: center;
-  padding-bottom: 80px;
+  padding-bottom: 72px;
 }
 
-/* Image column — right (has class .hero-image added by hero.js) */
+/* Image column — right */
 .hero.block > div > div:last-child,
 .hero.block > div > .hero-image {
   display: flex;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-end;
   align-self: end;
+  overflow: hidden;
 }
 
 /* Headings */
@@ -60,16 +62,16 @@
   margin-bottom: 12px;
 }
 
-/* Button wrapper */
+/* Button */
 .hero.block .button-wrapper {
-  margin-top: 24px;
+  margin-top: 28px;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 }
 
-/* Accent / CTA button */
-.hero.block a.button.accent {
+.hero.block a.button.accent,
+.hero.block a.button.primary {
   background-color: var(--xero-teal);
   border-color: var(--xero-teal);
   color: var(--xero-navy);
@@ -77,6 +79,7 @@
   font-weight: 700;
   padding: 14px 28px;
   border-radius: 3px;
+  text-decoration: none;
 }
 
 .hero.block a.button.accent:hover {
@@ -84,25 +87,26 @@
   border-color: #3ecb99;
 }
 
-/* Plain links in hero */
 .hero.block a:not(.button) {
   color: var(--xero-teal);
   text-decoration: underline;
 }
 
-/* Hero image */
+/* Hero image — rectangular, anchored to bottom, rounded top corners */
 .hero.block picture {
   display: block;
   width: 100%;
+  max-width: 520px;
 }
 
 .hero.block img {
   width: 100%;
-  max-width: 560px;
-  height: auto;
+  max-width: 520px;
+  height: 480px;
+  object-fit: cover;
+  object-position: center top;
   display: block;
   border-radius: 16px 16px 0 0;
-  object-fit: cover;
 }
 
 /* ============================================================
@@ -116,29 +120,25 @@
     gap: 32px;
   }
 
-  .hero.block > div > div:first-child {
+  .hero.block > div > div:first-child,
+  .hero.block > div > .hero-text {
     padding-bottom: 0;
-    align-self: auto;
+    order: 1;
+  }
+
+  .hero.block > div > div:last-child,
+  .hero.block > div > .hero-image {
+    justify-content: center;
+    order: 2;
   }
 
   .hero.block h1 {
     font-size: 36px;
   }
 
-  /* Image comes after text on mobile, no circular crop */
-  .hero.block > div > div:last-child,
-  .hero.block > div > .hero-image {
-    align-self: auto;
-    order: 2;
-  }
-
-  .hero.block > div > div:first-child {
-    order: 1;
-  }
-
   .hero.block img {
-    border-radius: 12px 12px 0 0;
-    width: 100%;
+    height: 300px;
     max-width: 100%;
+    border-radius: 12px 12px 0 0;
   }
 }
