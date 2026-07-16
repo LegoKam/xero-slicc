@@ -10,7 +10,6 @@ function buildPromoBar(promoP) {
 
   const dismiss = document.createElement('button');
   dismiss.className = 'nav-promo-dismiss';
-  dismiss.setAttribute('aria-label', 'Dismiss');
   dismiss.innerHTML = 'Dismiss <span aria-hidden="true">&times;</span>';
   dismiss.addEventListener('click', () => {
     bar.style.display = 'none';
