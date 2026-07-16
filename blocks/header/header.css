@@ -73,6 +73,11 @@
   display: block;
 }
 
+/* ── Nav menu wrapper (transparent on desktop) ── */
+.nav-menu {
+  display: contents;
+}
+
 /* ── Nav list ── */
 .nav-list {
   display: flex;
@@ -181,6 +186,58 @@
   color: #0078C8;
 }
 
+/* ── Hamburger (mobile only) ── */
+.nav-hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.nav-hamburger-icon,
+.nav-hamburger-icon::before,
+.nav-hamburger-icon::after {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #172C40;
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-hamburger-icon {
+  position: relative;
+}
+
+.nav-hamburger-icon::before,
+.nav-hamburger-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.nav-hamburger-icon::before { top: -7px; }
+.nav-hamburger-icon::after { top: 7px; }
+
+.nav-hamburger[aria-expanded="true"] .nav-hamburger-icon {
+  background-color: transparent;
+}
+
+.nav-hamburger[aria-expanded="true"] .nav-hamburger-icon::before {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-hamburger[aria-expanded="true"] .nav-hamburger-icon::after {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 /* ── CTAs ── */
 .nav-ctas {
   display: flex;
@@ -253,7 +310,8 @@ header .header[data-block-status="loaded"] {
     margin-right: auto;
   }
 
-  .nav-list {
+  /* Menu panel drops down below the bar when open */
+  .nav-menu {
     display: none;
     position: absolute;
     top: 56px;
@@ -261,14 +319,31 @@ header .header[data-block-status="loaded"] {
     right: 0;
     background: #ffffff;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     border-top: 1px solid #e5e7ea;
     box-shadow: 0 8px 16px rgba(23, 44, 64, 0.1);
     z-index: 100;
+    max-height: calc(100vh - 56px);
+    overflow-y: auto;
+  }
+
+  .nav-menu.open {
+    display: flex;
+  }
+
+  .nav-list {
+    display: flex;
+    position: static;
+    flex-direction: column;
+    align-items: stretch;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    flex: none;
     gap: 0;
   }
 
-  .nav-list.open {
+  .nav-hamburger {
     display: flex;
   }
 
@@ -304,7 +379,19 @@ header .header[data-block-status="loaded"] {
   }
 
   .nav-ctas {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-left: 0;
+    padding: 16px 20px 20px;
+    border-top: 1px solid #e5e7ea;
+  }
+
+  .nav-cta-primary,
+  .nav-cta-secondary {
+    text-align: center;
+    padding: 12px 20px;
   }
 
   .nav-promo-bar {

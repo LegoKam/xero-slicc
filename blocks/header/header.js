@@ -106,6 +106,13 @@ export default async function decorate(block) {
   const navBar = document.createElement('div');
   navBar.className = 'nav-bar';
 
+  // Hamburger toggle (mobile only, shown/hidden via CSS)
+  const hamburger = document.createElement('button');
+  hamburger.className = 'nav-hamburger';
+  hamburger.setAttribute('aria-label', 'Open menu');
+  hamburger.setAttribute('aria-expanded', 'false');
+  hamburger.innerHTML = '<span class="nav-hamburger-icon" aria-hidden="true"></span>';
+
   // Logo
   if (logoA) {
     const logoWrap = document.createElement('div');
@@ -121,6 +128,10 @@ export default async function decorate(block) {
     navBar.appendChild(logoWrap);
   }
 
+  // Menu panel wraps nav links + CTAs (display:contents on desktop, dropdown on mobile)
+  const menu = document.createElement('div');
+  menu.className = 'nav-menu';
+
   // Nav links
   if (navUl) {
     const list = document.createElement('ul');
@@ -129,7 +140,7 @@ export default async function decorate(block) {
       const item = buildNavItem(li);
       if (item) list.appendChild(item);
     });
-    navBar.appendChild(list);
+    menu.appendChild(list);
   }
 
   // CTAs
@@ -143,8 +154,19 @@ export default async function decorate(block) {
       btn.className = a.closest('strong') ? 'nav-cta-primary' : 'nav-cta-secondary';
       ctas.appendChild(btn);
     });
-    navBar.appendChild(ctas);
+    menu.appendChild(ctas);
   }
+
+  navBar.appendChild(menu);
+
+  // Wire up hamburger toggle: reveals nav links + CTAs on mobile
+  hamburger.addEventListener('click', () => {
+    const open = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', String(!open));
+    hamburger.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+    menu.classList.toggle('open', !open);
+  });
+  navBar.appendChild(hamburger);
 
   nav.appendChild(navBar);
   block.appendChild(nav);
