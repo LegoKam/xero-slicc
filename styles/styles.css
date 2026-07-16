@@ -285,6 +285,11 @@ main > .section.highlight-container:nth-child(3) {
   background-color: #EDF6FB;
 }
 
+/* Darken link for AA contrast on the light blue-gray bg (#0078C8 = 4.24:1 fails; #005A9E = ~6.5:1) */
+main > .section.highlight-container:nth-child(3) .highlight.block a:not(.button) {
+  color: #005A9E;
+}
+
 /* ============================================================
    Section: Columns (.section.columns-container)
    White background, heading above block
@@ -598,16 +603,17 @@ main > .section:nth-child(11), main > .section:nth-child(9) .button-wrapper {
 
 main > .section.dark a:not(.button),
 main > .section:nth-child(11), main > .section:nth-child(9) a:not(.button) {
-  color: #5BC4F0; /* lightened for contrast on navy bg — ~6.5:1 */
+  color: #ffffff; /* #5BC4F0 = 2.35:1 fails on the #0078C8 bg; white = ~4.6:1 passes AA */
   font-weight: 600;
+  text-decoration: underline;
   display: block;
   margin-top: 8px;
 }
 
 main > .section.dark a:not(.button):hover,
 main > .section:nth-child(11), main > .section:nth-child(9) a:not(.button):hover {
-  color: #5BC4F0;
-  text-decoration: underline;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 /* ============================================================
