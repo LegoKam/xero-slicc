@@ -12,8 +12,9 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 72px 32px 0;
-  min-height: 540px;
-  height: 612px; /* reserve exact height to prevent CLS */
+  box-sizing: border-box;
+  min-height: 612px;
+  height: 612px; /* border-box keeps 72px padding inside the reserved height, preventing CLS */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;

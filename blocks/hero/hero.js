@@ -48,7 +48,7 @@ export default function decorate(block) {
     const img = picture.querySelector('img');
     if (img) {
       img.loading = 'eager';
-      img.fetchpriority = 'high';
+      img.setAttribute('fetchpriority', 'high');
     }
   }
 }

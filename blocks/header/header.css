@@ -290,6 +290,7 @@
 
 header {
   height: auto !important;
+  min-height: 107px; /* reserve promo bar (42px) + nav bar (65px) to prevent CLS on <main> */
   position: sticky;
   top: 0;
   z-index: 200;
@@ -301,6 +302,10 @@ header .header[data-block-status="loaded"] {
 
 /* ── Responsive — mobile hamburger ── */
 @media (max-width: 899px) {
+  header {
+    min-height: 112px; /* promo bar (wraps ~56px) + nav bar (56px) */
+  }
+
   .nav-bar {
     padding: 0 16px;
     height: 56px;
